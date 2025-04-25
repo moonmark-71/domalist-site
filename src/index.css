@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 추가: body 기본 글자색 */
+body {
+  @apply text-gray-800;
+}
