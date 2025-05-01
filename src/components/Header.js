@@ -13,9 +13,12 @@ export default function Header() {
   return (
     <header className="bg-white shadow px-4 sm:px-6 py-4 mb-6">
       <div className="flex justify-between items-center max-w-[1200px] mx-auto">
+        {/* 로고 */}
         <NavLink to="/" className="text-2xl font-bold text-indigo-600">
           JB도매리스트
         </NavLink>
+
+        {/* 네비게이션 */}
         <nav className="flex gap-6 items-center text-[17px] font-medium">
           <NavLink
             to="/list"
@@ -49,14 +52,9 @@ export default function Header() {
           >
             콘텐츠
           </NavLink>
-          <NavLink
-            to="/seller-support"
-            className={({ isActive }) =>
-              `${baseClass} ${isActive ? activeClass : "text-gray-700"}`
-            }
-          >
-            정책지원
-          </NavLink>
+
+          {/* 정책지원 메뉴 삭제 완료 ✅ */}
+
           {!user && (
             <>
               <NavLink

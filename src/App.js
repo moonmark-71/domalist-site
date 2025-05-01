@@ -11,7 +11,7 @@ import SearchPage from "./pages/SearchPage";
 import ProductsList from "./pages/ProductsList";
 import ProductSearchPage from "./pages/ProductSearchPage";
 import SellerInfoCenter from "./pages/SellerInfoCenter";
-import SellerSupport from "./pages/SellerSupport";
+// ❌ SellerSupport import 삭제
 
 // 인증 관련
 import Login from "./pages/Login";
@@ -50,7 +50,7 @@ function App() {
           <Route path="/products" element={<ProductsList />} />
           <Route path="/external-products" element={<ProductSearchPage />} />
           <Route path="/seller-info" element={<SellerInfoCenter />} />
-          <Route path="/seller-support" element={<SellerSupport />} />
+          {/* ❌ seller-support 삭제 */}
 
           {/* 로그인/회원가입 */}
           <Route path="/login" element={<Login />} />
