@@ -1,25 +1,17 @@
 // src/components/ProtectedRoute.js
-import React, { useEffect, useState } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../firebase";
+import React from "react";
 import { Navigate } from "react-router-dom";
 
 const ProtectedRoute = ({ children }) => {
-  const [user, setUser] = useState(undefined); // null이 아닌 undefined로 초기화
-  const [loading, setLoading] = useState(true);
+  const user = JSON.parse(localStorage.getItem("user"));
+  const isAdmin = user?.role === "admin";
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoading(false);
-    });
+  if (!isAdmin) {
+    alert("관리자만 접근 가능한 페이지입니다.");
+    return <Navigate to="/" replace />;
+  }
 
-    return () => unsubscribe();
-  }, []);
-
-  if (loading) return <div>로딩 중...</div>;
-
-  return user ? children : <Navigate to="/admin-login" replace />;
+  return children;
 };
 
 export default ProtectedRoute;

@@ -153,7 +153,7 @@ function ProductsList() {
 
           {filteredExternal.length > 0 && (
             <>
-              <h3 className="text-xl font-semibold mb-2">🔥 도매꿙 인기상품</h3>
+              <h3 className="text-xl font-semibold mb-2">🔥 도매꾹 인기상품</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
                 {filteredExternal.map((product) => (
                   <ExternalProductCard key={product.id} {...product} />

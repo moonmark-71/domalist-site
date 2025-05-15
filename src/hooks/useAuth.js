@@ -10,10 +10,20 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      if (currentUser) {
+        const token = await currentUser.getIdTokenResult();
+        setUser({
+          uid: currentUser.uid,
+          email: currentUser.email,
+          role: token.claims.role || "user", // 🔐 여기 중요!
+        });
+      } else {
+        setUser(null);
+      }
       setLoading(false);
     });
+
     return () => unsubscribe();
   }, []);
 

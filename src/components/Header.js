@@ -1,6 +1,5 @@
 // src/components/Header.js
-import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import LogoutButton from "./LogoutButton";
 
@@ -13,12 +12,16 @@ export default function Header() {
   return (
     <header className="bg-white shadow px-4 sm:px-6 py-4 mb-6">
       <div className="flex justify-between items-center max-w-[1200px] mx-auto">
-        {/* 로고 */}
-        <NavLink to="/" className="text-2xl font-bold text-indigo-600">
-          JB도매리스트
-        </NavLink>
+        {/* 🔁 텍스트 대신 로고 이미지로 교체 */}
+        <Link to="/">
+          <img
+            src="/도매의민족로고.png"
+            alt="도매의민족 로고"
+            className="h-40 object-contain"
+          />
+        </Link>
 
-        {/* 네비게이션 */}
+        {/* 네비게이션 메뉴 */}
         <nav className="flex gap-6 items-center text-[17px] font-medium">
           <NavLink
             to="/list"
@@ -44,17 +47,8 @@ export default function Header() {
           >
             셀러정보센터
           </NavLink>
-          <NavLink
-            to="/article"
-            className={({ isActive }) =>
-              `${baseClass} ${isActive ? activeClass : "text-gray-700"}`
-            }
-          >
-            콘텐츠
-          </NavLink>
 
-          {/* 정책지원 메뉴 삭제 완료 ✅ */}
-
+          {/* 로그인/회원가입 or 로그아웃 */}
           {!user && (
             <>
               <NavLink
